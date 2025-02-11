@@ -1,0 +1,285 @@
+CS 370 Computation and complexity
+universality - turing
+sortingbest algo not there merge sort n log n
+decidable languages, Turing-recognisable languages and their complements - which can be solved, which cannot be solved - halting one side can be solved
+Graphs in DS java
+
+
+LAB 1
+and aaa, but not b and not aabab.'
+01, a, 99
+01, b, 02
+99, a, 99
+99, b, 02
+02, a, 02
+02, b, 02
+
+
+ 'least one b, e.g. b and aabab, but not 𝑒 and not aaa.'
+01, a, 02
+01, b, 99
+99, a, 99
+99, b, 99
+02, a, 02
+02, b, 99
+
+with a 1, e.g. 10 and 110, but not 𝑒 and not 01.'
+01, 0, 02
+01, 1, 99
+02, 0, 02
+02, 1, 02
+99, 0, 99
+99, 1, 99
+
+begin with a 1, e.g. 𝑒 and 01, but not 10 and not 110.'
+99, 0, 98
+99, 1, 01
+98, 0, 98
+98, 1, 98
+01, 0, 01
+01, 1, 01
+
+'a 1, e.g. 01 and 101, but not 𝑒 and not 110.'
+01, 0, 02
+01, 1, 03
+02, 0, 02
+02, 1, 99
+03, 0, 03
+03, 1, 99
+99, 0, 02
+99, 1, 99
+
+'end with a 1, e.g. 𝑒 and 110, but not 01 and not 101.'
+99, 0, 01
+99, 1, 02
+01, 0, 98
+01, 1, 01
+02, 1, 02
+02, 0, 98
+98, 0, 98
+98, 1, 01
+
+'exactly one 1, e.g. 1 and 010, but not 0 and not 101.'
+01, 1, 99
+01, 0, 02
+02, 0, 02
+02, 1, 99
+99, 0, 99
+99, 1, 02
+
+'1s or more than one 1, e.g. 0 and 101, but not 1 and not '
+ '010.'
+01, 0, 99
+01, 1, 02
+02, 0, 02
+02, 1, 99
+99, 0, 99
+99, 1, 02
+
+'number of 1s and any number of 0s, e.g. 𝑒 and 1010, but '
+ 'not 111 and not 0100.'
+99, 0, 02
+99, 1, 01
+01, 0, 01
+01, 1, 98
+98, 0, 98
+98, 1, 01
+02, 0, 02
+02, 1, 01
+
+number of 0s and any number of 1s, e.g. 0 and 0100, but '
+ 'not 00 and not 1010.'
+01, 0, 99
+01, 1, 01
+99, 0, 01
+99, 1, 99
+
+
+WEEK 2
+w is empty or ends with 1
+99, 0, 98
+99, 1, 01
+01, 0, 98
+01, 1, 01
+98, 0, 98
+98, 1, 01
+
+w has an odd number of 1s
+01, 0, 01
+01, 1, 99
+99, 0, 99
+99, 1, 01
+
+001
+01, 0, 02
+01, 1, 01
+02, 0, 03
+02, 1, 01
+03, 0, 03
+03, 1, 99
+99, 0, 99
+99, 1, 99
+
+aaaabbbbbaaa
+01, a, 02
+01, b, 03
+02, a, 99
+02, b, 02
+99, a, 99
+99, b, 02
+03, a, 03
+03, b, 98
+98, a, 03
+98, b, 98
+
+
+doesnot contain substring ab
+99, a, 98
+99, b, 99
+98, a, 98
+98, b, 01
+01, a, 01
+01, b, 01
+
+
+|w| is even
+99, a, 01
+99, b, 01
+01, a, 99
+01, b, 99
+
+|w| > 0
+01, a, 99
+01, b, 99
+99, a, 99
+99, b, 99
+
+at least 2 bs
+01, a, 01
+01, b, 02
+02, a, 02
+02, b, 99
+99, a, 99
+99, b, 99
+
+each a is followed by at least 1 b
+99, a, 98
+99, b, 99
+98, a, 01
+98, b, 97
+97, a, 98
+97, b, 97
+01, a, 01
+01, b, 01
+
+begains with 1 and ends with 0
+01, 0, 01
+01, 1, 02
+02, 0, 99
+02, 1, 02
+99, 0, 99
+99, 1, 02 
+
+does not contains baba
+99, a, 99
+99, b, 98
+98, a, 97
+98, b, 99
+97, a, 99
+97, b, 96
+96, a, 01
+96, b, 99
+01, a, 01
+01, b, 01
+
+
+
+
+PDA
+L4
+00, e, e, 01, $
+
+01, a, e, 02, e
+01, b, e, 02, e
+
+02, a, e, 02, a
+02, b, e, 02, b
+
+02, a, e, 04, e
+02, b, e, 04, e
+
+04, a, a, 04, e
+04, b, b, 04, e
+
+04, a, e, 05, e
+04, b, e, 05, e
+
+05, e, $, 99, e
+---------------------------------
+
+L4b {0^2n 1^n}
+00, e, e, 01, $
+01, 0, e, 01, 0
+01, 1, 0, 02, e
+02, e, 0, 01, e
+01, e, $, 99, e
+---------------------------------
+L4c equal number of zeros and ones
+01, e, e, 02, $
+02, 0, e, 02, 0
+02, 0, 1, 02, e
+02, 1, e, 02, 1
+02, 1, 0, 02, e
+02, e, $, 99, e
+
+---------------------------------
+
+L5 twice as many zeros as ones
+
+01, e, e, 02, $
+02, 0, e, 02, 0
+02, 1, e, 02, 1
+02, 1, 0, 03, e
+03, e, 0, 02, e
+02, 0, 1, 04, e
+02, 0, 0, 04, e
+04, e, 0, 02, e
+04, e, 1, 02, e
+02, e, $, 99, e
+
+----------------------------------
+u111v
+
+00, e, e, 01, $
+
+01, 0, e, 01, p
+01, 1, e, 01, p
+01, 0, e, 02, e
+01, 1, e, 03, e
+
+02, 0, p, 02, e
+02, 1, p, 02, e
+02, 1, e, 05, e
+05, 1, e, 06, e
+06, 1, e, 07, e
+
+03, 0, p, 03, e
+03, 1, p, 03, e
+03, 1, e, 08, e
+08, 1, e, 09, e
+09, 1, e, 10, e
+
+07, 0, e, 07, q
+07, 1, e, 07, q
+
+
+10, 0, e, 10, q
+10, 1, e, 10, q
+
+07, 1, e, 04, e
+10, 0, e, 04, e
+
+04, 0, q, 04, e
+04, 1, q, 04, e
+04, e, $, 99, e
+
