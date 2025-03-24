@@ -690,3 +690,40 @@ w does not begins with 1
 07, 0, 07, 0, L
 07, 1, 07, 1, L
 07, _, 99, _, R
+
+--------------------------------------------------------------------------------------
+{1^n 0^n : n >= 0}
+00, 1, 01, _, R  # Mark off an 'a' at the start of word
+00, _, 99, _, R  # Accept word if equal 'a's and 'b's
+01, 1, 01, 1, R  # Loop to the end of the word
+01, 0, 01, 0, R  # Loop to the end of the word
+01, _, 02, _, L  # Position tape head at end of word
+02, 0, 03, _, L  # Mark off a 'b' at the end of word
+03, 1, 03, 1, L  # Loop back to beginning of word
+03, 0, 03, 0, L  # Loop back to beginning of word
+03, _, 00, _, R  # Position tape head at start of word
+
+
+---------------------------------------------------------------------------------
+w is odd and has 1 in the middle
+00, 0, 01, 0, R
+00, 1, 01, 1, R
+01, 0, 00, 0, R
+01, 1, 00, 1, R
+01, _, 02, _, L
+
+02, 0, 03, _, L
+02, 1, 03, _, L
+03, 0, 03, 0, L
+03, 1, 03, 1, L
+03, _, 04, _, R
+04, 0, 05, _, R
+04, 1, 05, _, R
+05, 0, 05, 0, R
+05, 1, 05, 1, R
+
+05, _, 06, _, L
+06, 0, 06, _, L
+06, 1, 07, _, L
+
+07, _, 99, _, L TO BE DONE 
