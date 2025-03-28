@@ -768,3 +768,46 @@ b, e.g. !=0 and 0!=000, but not 𝑒 and not != and not 0!=0.
 05, 0, 06, 0, R
 06, 0, 06, 0, R
 06, _, 99, _, L
+
+
+-----------------------------------------------------------------------------
+The language is {w ∈ {0, 1}*: w contains an equal number of 0s and 1s}.
+The input alphabet for this language is {0, 1}.
+
+This language consists of all binary words that have equal numbers of 0s and 1s,
+in any order, e.g. 𝑒 and 0110, but not 0 and not 0010111.
+
+00, _, 99, _, R
+
+00, x, 07, x, R
+07, x, 07, x, R
+07, _, 99, _, R
+
+00, 0, 01, _, R
+01, 0, 01, 0, R
+01, 1, 01, 1, R
+01, x, 01, x, R
+
+01, _, 02, _, L
+02, 0, 02, 0, L
+02, x, 02, x, L
+02, 1, 03, x, L
+03, 0, 03, 0, L
+03, 1, 03, 1, L
+03, x, 03, x, L
+03, _, 00, _, R
+
+
+00, 1, 04, _, R
+04, 0, 04, 0, R
+04, 1, 04, 1, R
+04, x, 04, x, R
+
+04, _, 05, _, L
+05, 1, 05, 1, L
+05, x, 05, x, L
+05, 0, 06, x, L
+06, 0, 06, 0, L
+06, 1, 06, 1, L
+06, x, 06, x, L
+06, _, 00, _, R
