@@ -859,3 +859,85 @@ in any order, e.g. 𝑒 and 0110, but not 0 and not 0010111.
 09, y, 09, y, R
 09, 0, 09, 0, R
 09, _, 99, _, R
+-------------------------------------------------------------------------------
+The language is {w ∈ {a, b, c}*: w contains an equal number of as, bs,and cs}.
+The input alphabet for this language is {a, b, c}.
+This language consists of all ternary words that have equal numbers of as, bs,
+and cs, in any order, e.g. 𝑒 and cacbba, but not b and not aabcc.
+
+00, _, 99, _, R
+00, x, 89, x, R
+89, x, 89, x, R
+89, _, 99, _, R
+
+00, a, 01, _, R
+01, a, 01, a, R
+01, b, 01, b, R
+01, c, 01, c, R
+01, x, 01, x, R
+01, _, 02, _, L
+02, a, 02, a, L
+02, x, 02, x, L
+02, b, 03, x, L
+03, a, 03, a, L
+03, b, 03, b, L
+03, x, 03, x, L
+03, c, 04, x, L
+02, c, 05, x, L
+05, a, 05, a, L
+05, c, 05, c, L
+05, x, 05, x, L
+05, b, 04, x, L
+04, a, 04, a, L
+04, b, 04, b, L
+04, c, 04, c, L
+04, x, 04, x, L
+04, _, 00, _, R
+
+00, b, 06, _, R
+06, a, 06, a, R
+06, b, 06, b, R
+06, c, 06, c, R
+06, x, 06, x, R
+06, _, 07, _, L
+07, b, 07, b, L
+07, x, 07, x, L
+07, a, 08, x, L
+08, a, 08, a, L
+08, b, 08, b, L
+08, x, 08, x, L
+08, c, 09, x, L
+07, c, 10, x, L
+10, b, 10, b, L
+10, c, 10, c, L
+10, x, 10, x, L
+10, a, 09, x, L
+09, a, 09, a, L
+09, b, 09, b, L
+09, c, 09, c, L
+09, x, 09, x, L
+09, _, 00, _, R
+
+00, c, 11, _, R
+11, a, 11, a, R
+11, b, 11, b, R
+11, c, 11, c, R
+11, x, 11, x, R
+11, _, 12, _, L
+12, c, 12, c, L
+12, x, 12, x, L
+12, a, 13, x, L
+13, a, 13, a, L
+13, c, 13, c, L
+13, x, 13, x, L
+13, b, 14, x, L
+12, b, 15, x, L
+15, b, 15, b, L
+15, c, 15, c, L
+15, x, 15, x, L
+15, a, 14, x, L
+14, a, 14, a, L
+14, b, 14, b, L
+14, c, 14, c, L
+14, x, 14, x, L
+14, _, 00, _, R
