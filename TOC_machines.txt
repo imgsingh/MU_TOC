@@ -814,51 +814,90 @@ in any order, e.g. 𝑒 and 0110, but not 0 and not 0010111.
 
 ------------------------------------------------------------------
 {axbxc}
-00, 0, 01, _, R
-01, 0, 01, 0, R
-01, x, 01, x, R
-01, y, 01, y, R
-01, _, 02, _, L
-02, y, 02, y, L
-02, 0, 03, y, L
-03, 0, 03, 0, L
-03, x, 03, x, L
-03, _, 00, _, R
+00,0,02,_,R
 
-00, x, 10, _, R
-10, x, 10, x, R
-10, y, 10, y, R
-10, 0, 10, 0, R
-10, _, 11, _, L
-11, 0, 12, 0, L
-11, y, 12, y, L
-12, 0, 13, 0, L
-12, x, 13, x, L
-12, y, 13, y, L
-13, 0, 13, 0, L
-13, x, 13, x, L
-13, y, 13, y, L
-13, _, 14, _, R
+02,0,02,0,R
 
+02,x,021,x,R
 
-14, 0, 05, _, R
-05, 0, 05, 0, R
-05, x, 05, x, R
-05, y, 05, y, R
-05, _, 06, _, L
-06, 0, 07, _, L
-06, y, 07, _, L
-07, 0, 07, 0, L
-07, x, 07, x, L
-07, y, 07, y, L
-07, _, 14, _, R
+021,0,021,0,R
 
-14, x, 08, _, R
-08, y, 09, y, R
-08, 0, 09, 0, R
-09, y, 09, y, R
-09, 0, 09, 0, R
-09, _, 99, _, R
+021,x,03,x,R
+
+03,1,03,1,R
+
+03,0,04,1,L
+
+04,0,04,0,L
+
+04,1,04,1,L
+
+04,x,04,x,L
+
+04,_,00,_,R
+ 
+ 
+00,x,10,_,R
+
+10,1,10,1,R
+
+10,2,10,2,R
+
+10,0,10,0,R
+
+10,x,10,x,R
+
+10,_,11,_,L
+
+11,0,12,0,L
+
+12,1,12,1,L
+
+12,2,12,2,L
+
+12,0,12,0,L
+
+12,x,12,x,L
+
+12,_,01,_,R
+ 
+ 
+ 
+01,0,05,_,R
+
+05,0,05,0,R
+
+05,x,06,x,R
+
+06,2,06,2,R
+
+06,0,07,2,L
+
+06,1,07,2,L
+
+07,x,07,x,L
+
+07,1,07,1,L
+
+07,0,07,0,L
+
+07,2,07,2,L
+
+07,_,01,_,R
+ 
+ 
+01,x,08,_,R
+
+08,0,08,0,R
+
+08,1,08,1,R
+
+08,2,08,2,R
+
+08,_,09,_,L
+
+09,0,99,0,R
+ 
 -------------------------------------------------------------------------------
 The language is {w ∈ {a, b, c}*: w contains an equal number of as, bs,and cs}.
 The input alphabet for this language is {a, b, c}.
@@ -941,3 +980,71 @@ and cs, in any order, e.g. 𝑒 and cacbba, but not b and not aabcc.
 14, c, 14, c, L
 14, x, 14, x, L
 14, _, 00, _, R
+
+----------------------------------------------------------------------------------------
+{axbxc: a,b,c ∈ {0}*: |c| < |a|, |c| < |b| )}
+        This language consists of all binary words formed from three 
+        substrings of 0s separated by two xs, where the length of the 
+        third substring is less than the lengths of each of the other 
+        two substrings, e.g. 0x0x and 0x00x and 00x00x0 and 000x00x0 
+        and 000x0000x0, but not 𝑒 and not x0 and not xx and not 0xx 
+        and not 0x0x0 and not 000xx00 and not 000x0000x000.
+
+00, x, 00, x, R
+00, 0, 00, 0, R
+00, _, 01, _, L
+01, =, 01, =, L
+01, 0, 02, =, L
+02, 0, 02, 0, L
+02, x, 03, x, L
+03, 0, 03, 0, L
+03, x, 20, x, L
+20, 0, 20, 0, L
+20, _, 04, _, R
+04, 0, 05, _, R
+05, 0, 05, 0, R
+05, =, 05, =, R
+05, x, 05, x, R
+05, _, 01, _, L
+
+01, x, 06, x, L
+06, 0, 06, 0, L
+06, x, 09, x, L
+09, 0, 09, 0, L
+09, _, 07, _, R
+07, 0, 08, _, R
+08, 0, 08, _, R
+08, x, 10, _, R
+10, x, 10, x, R
+10, 0, 10, 0, R
+10, =, 10, =, R
+10, _, 11, _, L
+11, =, 12, _, L
+12, =, 12, =, L
+12, x, 13, x, L
+13, 0, 13, 0, L
+13, _, 14, _, R
+14, 0, 15, _, R
+15, 0, 15, 0, R
+15, =, 15, =, R
+15, x, 15, x, R
+15, _, 11, _, L
+11, x, 16, _, L
+16, 0, 99, 0, L
+
+----------------------------------------------------------------------------
+{aˣbʸcᶻ : x,y,z ≥ 0, x = max(y, z)}
+        This language consists of all ternary words formed from some 
+        as followed by some bs followed by some cs, where the number 
+        of as is equal to the maximum of the number of bs and the 
+        number of cs, e.g. 𝑒 and ab and ac and abc and aaabbccc, but 
+        not a and not b and not aabc and not aabbbaa and not abac and 
+        not aaacccbb.
+ 
+{aˣbʸcᶻ : x,y,z ≥ 0, x = min(y, z)}
+        This language consists of all ternary words formed from some 
+        as followed by some bs followed by some cs, where the number 
+        of as is equal to the minimum of the number of bs and the 
+        number of cs, e.g. 𝑒 and b and c and abc and aabbccc, but not 
+        a and not bc and not aabc and not abba and not bac and not 
+        aaccbbb.
