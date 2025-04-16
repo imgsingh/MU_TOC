@@ -1040,6 +1040,31 @@ and cs, in any order, e.g. 𝑒 and cacbba, but not b and not aabcc.
         number of cs, e.g. 𝑒 and ab and ac and abc and aaabbccc, but 
         not a and not b and not aabc and not aabbbaa and not abac and 
         not aaacccbb.
+
+00,a,01,x,R
+00,x,00,x,R
+01,a,01,a,R
+01,x,01,x,R
+01,c,03,x,R
+01,b,02,x,R
+02,b,02,b,R
+###check below
+02,_,04,_,L
+02,x,02,x,R
+02,c,03,x,R
+03,c,03,c,R
+
+
+03,_,04,_,L
+04,c,04,c,L
+04,b,04,b,L
+04,a,04,a,L
+04,x,04,x,L
+04,_,00,_,R
+
+00,_,99,_,R
+
+---------------------------------------------------------------------------
  
 {aˣbʸcᶻ : x,y,z ≥ 0, x = min(y, z)}
         This language consists of all ternary words formed from some 
@@ -1048,3 +1073,37 @@ and cs, in any order, e.g. 𝑒 and cacbba, but not b and not aabcc.
         number of cs, e.g. 𝑒 and b and c and abc and aabbccc, but not 
         a and not bc and not aabc and not abba and not bac and not 
         aaccbbb.
+
+
+00,a,01,x,R
+00,x,00,x,R
+01,a,01,a,R
+01,x,01,x,R
+01,c,50,x,R
+01,b,02,x,R
+02,b,02,b,R
+###check
+02,_,50,_,L
+02,x,02,x,R
+02,c,03,x,R
+03,c,03,c,R
+
+
+03,_,04,_,L
+04,c,04,c,L
+04,b,04,b,L
+04,a,04,a,L
+04,x,04,x,L
+04,_,00,_,R
+
+00,_,99,_,R
+00,c,08,c,R
+08,c,08,c,R
+08,_,99,_,R
+06,_,99,_,R
+
+00,b,06,b,R
+06,b,06,b,R
+06,x,07,x,R
+07,x,07,x,R
+07,_,99,_,R
